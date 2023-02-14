@@ -1,4 +1,5 @@
 const express = require('express');
+const connectDb = require('./config/dbConnection');
 require('dotenv').config();
 
 const _PORT = process.env.PORT || 4000;
@@ -16,3 +17,4 @@ app.use(errorHandler);
 app.listen(_PORT, () => {
   console.log(`Sever is running at http://localhost:${_PORT}`);
 });
+connectDb();
