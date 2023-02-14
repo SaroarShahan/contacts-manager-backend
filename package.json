@@ -9,7 +9,8 @@
     "format": "prettier --check --write ."
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
