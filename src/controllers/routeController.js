@@ -1,5 +1,6 @@
 const asyncHandler = require('../middleware/asyncHandler');
 const { createCustomError } = require('../utils/CustomError');
+const Contact = require('../models/contactModel');
 
 /**
  * @description Get all contacts
@@ -8,8 +9,16 @@ const { createCustomError } = require('../utils/CustomError');
  * @access public
  */
 exports.getContacts = asyncHandler(async (req, res) => {
+  const contacts = await Contact.find();
+
   res.status(200).json({
-    message: 'Get all contacts',
+    status: 'success',
+    data: {
+      contacts,
+    },
+    meta: {
+      counts: contacts.length,
+    },
   });
 });
 
@@ -26,8 +35,18 @@ exports.createContact = asyncHandler(async (req, res, next) => {
     return next(createCustomError('All the fields are required', 400));
   }
 
+  const newContact = await Contact.create({
+    name,
+    email,
+    phone,
+  });
+
   res.status(201).json({
+    status: 'success',
     message: 'Contact created successfully',
+    data: {
+      contact: newContact,
+    },
   });
 });
 
