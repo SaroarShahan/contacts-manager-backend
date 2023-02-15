@@ -14,6 +14,11 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: [true, 'Email is required'],
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
