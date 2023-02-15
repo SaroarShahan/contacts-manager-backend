@@ -12,6 +12,7 @@ app.use(express.json());
 
 // routes
 app.use('/api/v1/contacts', require('./routes/contactRoutes'));
+app.use('/api/v1/auth', require('./routes/authRoutes'));
 app.use(errorHandler);
 
 app.listen(_PORT, () => {
